@@ -2682,3 +2682,15 @@ body.night-glow .sec-chip {
     padding: 24px 16px;
   }
 }
+
+@media screen and (max-width: 600px){
+  .hero-kicker{
+    display: none;
+  }
+  .score-vs{
+    display: none !important;
+  }
+  .backstage-actions a{
+    flex-grow: 1;
+  }
+}
