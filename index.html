@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Big Brass Christmas • Fresno's Annual Low Brass Holiday Concert</title>
+  <meta name="description"
+    content="Join Big Brass Christmas on December 13th at 12:00 PM at River Park (in front of Regal Cinema) in Fresno, CA for our annual low brass holiday performance!" />
+
+  <!-- Browser Tab Favicon (Golden Tuba with Santa Hat) -->
+  <link rel="icon" type="image/svg+xml" href="files/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="256x256" href="files/favicon.png" />
+  <link rel="apple-touch-icon" href="files/favicon.png" />
+
+  <!-- Vintage Slab, Editorial Serif & Geometric Sans Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,600;0,700;0,800;0,900;1,700&family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Space+Mono:wght@700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- Background Layer: Deep Festive Vignette & Back-Layer Snow + Notes -->
+  <div class="ambient-bg-glow" aria-hidden="true"></div>
+  <canvas id="festive-bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- Foreground Overlay: Crisp Falling Snowflakes & Musical Notes + Paper Grain -->
+  <canvas id="festive-fg-canvas" aria-hidden="true"></canvas>
+
+  <!-- Outer Vintage Poster Notched Frame -->
+  <div class="poster-shell">
+
+    <!-- Swaying String of Holiday Lights Across the Top -->
+    <div class="string-lights-wrap" id="string-lights" aria-hidden="true">
+      <div class="light-wire"></div>
+      <div class="bulbs-row" id="bulbs-row">
+        <span class="bulb red"></span>
+        <span class="bulb gold"></span>
+        <span class="bulb green"></span>
+        <span class="bulb warm"></span>
+        <span class="bulb red"></span>
+        <span class="bulb gold"></span>
+        <span class="bulb green"></span>
+        <span class="bulb warm"></span>
+        <span class="bulb red"></span>
+        <span class="bulb gold"></span>
+        <span class="bulb green"></span>
+        <span class="bulb warm"></span>
+        <span class="bulb red"></span>
+        <span class="bulb gold"></span>
+        <span class="bulb green"></span>
+        <span class="bulb warm"></span>
+      </div>
+    </div>
+
+    <!-- Floating Tactile Navigation Bar -->
+    <header class="site-header">
+      <nav class="nav-bar" aria-label="Main Navigation">
+        <a href="#top" class="brand-chip" aria-label="Big Brass Christmas Home">
+          <img src="files/logo-horizontal.svg" alt="Big Brass Christmas" class="brand-logo-img day-lockup" />
+          <img src="files/logo-horizontal-night.svg" alt="Big Brass Christmas" class="brand-logo-img night-lockup" />
+          <span class="brand-year">'26</span>
+        </a>
+
+        <div class="nav-links">
+          <a href="#ticket-section">The Concert</a>
+          <a href="#horns-section">The Horns</a>
+          <a href="#rsvp-section">Roll Call &amp; RSVP</a>
+          <a href="#performers-club">Performers</a>
+          <a href="#faq-section">FAQ</a>
+        </div>
+
+        <div class="nav-actions">
+          <button type="button" id="theme-toggle-btn" class="nav-theme-btn"
+            aria-label="Toggle Holiday Lights Evening Mode" title="Toggle Festive Evening Lights Mode">
+            <svg class="bulb-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path
+                d="M10 2a6 6 0 00-3.815 10.631C7.237 13.5 8 14.443 8 15.5v.5a2 2 0 002 2h0a2 2 0 002-2v-.5c0-1.057.763-2 1.815-2.869A6 6 0 0010 2zm-1.5 14.5h3v-.5h-3v.5z" />
+            </svg>
+            <span id="theme-btn-text">Night Glow</span>
+          </button>
+          <a href="files/Big%20Brass%20Christmas%20Flyer%202026.pdf" target="_blank" rel="noopener"
+            class="nav-flyer-link" title="Download Printable PDF Flyer">
+            <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path
+                d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03l-2.955 3.129V2.75z" />
+              <path
+                d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z" />
+            </svg>
+            <span>Flyer</span>
+          </a>
+          <a href="#rsvp-section" class="nav-rsvp-btn">Count Me In!</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <!-- ====================================================================
+           HERO STAGE: AUTHENTIC FLYER ARTWORK
+           ==================================================================== -->
+      <section class="hero-stage">
+        <div class="hero-poster-frame">
+          <!-- Decorative Scalloped Postage Stamp Badge (Top Left Desktop) -->
+          <div class="postage-badge" aria-hidden="true">
+            <div class="postage-inner">
+              <span class="postage-top">FRESNO • CA</span>
+              <span class="postage-main">FREE</span>
+              <span class="postage-sub">OUTDOOR SHOW</span>
+            </div>
+          </div>
+
+          <!-- Authentic Corner Holly Vectors from the Flyer -->
+          <img src="files/corner-holly-left.svg" alt="" class="corner-decor top-left" aria-hidden="true" />
+          <img src="files/corner-holly-right.svg" alt="" class="corner-decor top-right" aria-hidden="true" />
+          <img src="files/sprig-left.svg" alt="" class="corner-decor bottom-left" aria-hidden="true" />
+          <img src="files/sprig-right.svg" alt="" class="corner-decor bottom-right" aria-hidden="true" />
+
+          <!-- Spinning Circular Stamp Sticker (Top Right Desktop) -->
+          <div class="spinning-stamp" aria-hidden="true">
+            <svg viewBox="0 0 140 140" class="stamp-svg">
+              <defs>
+                <path id="stampCircle" d="M 70, 70 m -52, 0 a 52,52 0 1,1 104,0 a 52,52 0 1,1 -104,0" />
+              </defs>
+              <circle cx="70" cy="70" r="64" fill="#F2C138" stroke="#0B152E" stroke-width="4" />
+              <circle cx="70" cy="70" r="36" fill="#DB1F26" stroke="#0B152E" stroke-width="3" />
+              <text fill="#0B152E" font-family="Space Mono, monospace" font-size="10.2" font-weight="700"
+                letter-spacing="2.1">
+                <textPath href="#stampCircle">FRESNO LOW BRASS • FREE CONCERT •</textPath>
+              </text>
+              <text x="70" y="67" text-anchor="middle" fill="#FFFFFF" font-family="Besley, serif" font-weight="900"
+                font-size="14">DEC</text>
+              <text x="70" y="83" text-anchor="middle" fill="#FFFFFF" font-family="Besley, serif" font-weight="900"
+                font-size="16">13TH</text>
+            </svg>
+          </div>
+
+          <!-- Tilted Pill Tag -->
+          <div class="hero-kicker-wrap">
+            <span class="hero-kicker">
+              <svg class="star-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 1L14.8 9.2L23 12L14.8 14.8L12 23L9.2 14.8L1 12L9.2 9.2L12 1Z" fill="currentColor" />
+              </svg>
+              FRESNO'S FAVORITE BOOMING HOLIDAY TRADITION
+              <svg class="star-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 1L14.8 9.2L23 12L14.8 14.8L12 23L9.2 14.8L1 12L9.2 9.2L12 1Z" fill="currentColor" />
+              </svg>
+            </span>
+          </div>
+
+          <!-- Authentic Arched "Big Brass Christmas" Vector Title -->
+          <div class="hero-title-lockup">
+            <h1 class="sr-only">Big Brass Christmas - Holiday Performance at River Park, Fresno CA, December 13th at
+              12PM</h1>
+            <img src="files/title-lockup.svg" alt="Big Brass Christmas" class="title-vector-img day-lockup" />
+            <img src="files/title-lockup-night.svg" alt="Big Brass Christmas" class="title-vector-img night-lockup" />
+          </div>
+
+          <!-- Centerpiece Tuba & Holly Artwork (Click for a visual burst of musical notes & snowflakes) -->
+          <div class="hero-tuba-showcase">
+            <div class="tuba-click-target" id="tuba-interactive" role="button" tabindex="0"
+              aria-label="Click for a festive burst of musical notes and snowflakes!">
+              <div class="soundwave-ring ring-1" aria-hidden="true"></div>
+              <div class="soundwave-ring ring-2" aria-hidden="true"></div>
+              <div id="note-emitter" class="note-emitter" aria-hidden="true"></div>
+
+              <!-- Swappable Logo / Tuba Vector -->
+              <div class="logo-slot" id="logo-slot">
+                <img src="files/tuba-artwork.svg"
+                  alt="Golden Tuba wearing a Santa Hat surrounded by holly and snowflakes" class="tuba-vector-img"
+                  id="main-tuba-img" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Authentic "Holiday Performance" Red Ribbon Banner Vector -->
+          <div class="hero-ribbon-wrap">
+            <img src="files/ribbon-banner.svg" alt="Holiday Performance" class="ribbon-vector-img" />
+          </div>
+
+          <!-- River Park Venue Lockup + Scalloped Date Badge -->
+          <div class="hero-event-lockup">
+            <div class="venue-vector-wrap">
+              <div class="venue-at-line">
+                <span class="at-text">AT</span>
+              </div>
+              <img src="files/venue-lockup.svg" alt="River Park - In Front of Regal"
+                class="venue-vector-img day-lockup" />
+              <img src="files/venue-lockup-night.svg" alt="River Park - In Front of Regal"
+                class="venue-vector-img night-lockup" />
+              <div class="venue-at-line bottom">
+                <span class="city-text">FRESNO, CA</span>
+              </div>
+            </div>
+
+            <!-- Authentic Scalloped Date Plaque -->
+            <div class="date-plaque-stage">
+              <img src="files/date-plaque-bg.svg" alt="" class="date-plaque-vector day-lockup" aria-hidden="true" />
+              <img src="files/date-plaque-bg-night.svg" alt="" class="date-plaque-vector night-lockup"
+                aria-hidden="true" />
+              <div class="date-plaque-overlay">
+                <div class="plaque-line-1">DECEMBER 13<sup class="th-sup">TH</sup></div>
+                <div class="plaque-line-2">AT 12PM</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Big Tactile Hero CTAs -->
+          <div class="hero-cta-row">
+            <a href="#rsvp-attendee" class="cta-btn cta-red">
+              <span>I'm Coming to Watch!</span>
+              <span class="cta-counter-chip" id="hero-attendee-chip">0 Going</span>
+            </a>
+            <a href="#rsvp-performer" class="cta-btn cta-gold">
+              <span>I Want to Perform!</span>
+              <span class="cta-counter-chip dark" id="hero-performer-chip">0 Horns</span>
+            </a>
+            <a href="#performers-club" class="cta-btn cta-green-outline">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+              </svg>
+              <span>Performers Facebook Group</span>
+            </a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           TILTED FESTIVE MARQUEE TICKER TAPE
+           ==================================================================== -->
+      <div class="marquee-band" aria-hidden="true">
+        <div class="marquee-track">
+          <span>TUBAS</span><span class="dot">♪</span>
+          <span>SOUSAPHONES</span><span class="dot">❄</span>
+          <span>EUPHONIUMS</span><span class="dot">♫</span>
+          <span>BARITONES</span><span class="dot">❄</span>
+          <span>TROMBONES</span><span class="dot">♪</span>
+          <span>DECEMBER 13TH @ 12PM</span><span class="dot">❄</span>
+          <span>RIVER PARK IN FRONT OF REGAL CINEMA</span><span class="dot">♫</span>
+          <span>100% FREE CONCERT</span><span class="dot">❄</span>
+          <span>TUBAS</span><span class="dot">♪</span>
+          <span>SOUSAPHONES</span><span class="dot">❄</span>
+          <span>EUPHONIUMS</span><span class="dot">♫</span>
+          <span>BARITONES</span><span class="dot">❄</span>
+          <span>TROMBONES</span><span class="dot">♪</span>
+          <span>DECEMBER 13TH @ 12PM</span><span class="dot">❄</span>
+          <span>RIVER PARK IN FRONT OF REGAL CINEMA</span><span class="dot">♫</span>
+          <span>100% FREE CONCERT</span><span class="dot">❄</span>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           CONCERT TICKET & VENUE SHOWCASE
+           ==================================================================== -->
+      <section id="ticket-section" class="ticket-section reveal-on-scroll">
+        <div class="container">
+          <div class="section-intro">
+            <div class="sticker-tag red-tilt">ONE DAY ONLY • ANNUAL CONCERT</div>
+            <h2 class="display-heading">A Wall of Warm Low Brass Sound</h2>
+            <p class="lead-copy">
+              Once a year, low brass players from across Fresno and the Central Valley gather with Santa hats,
+              tinsel-wrapped bells, and booming horns to play a single joyful Christmas concert outdoors at River Park.
+            </p>
+          </div>
+
+          <!-- Vintage Perforated "Admit All" Concert Ticket -->
+          <div class="concert-ticket">
+            <div class="ticket-main">
+              <div class="ticket-top-bar">
+                <span class="ticket-series">FRESNO HOLIDAY CONCERT SERIES</span>
+                <span class="ticket-admit">FREE ADMISSION • ALL AGES</span>
+              </div>
+
+              <div class="ticket-headline-grid">
+                <div class="ticket-detail-box">
+                  <span class="detail-eyebrow">DATE &amp; SHOWTIME</span>
+                  <strong class="detail-primary">Sunday, Dec 13, 2026</strong>
+                  <span class="detail-secondary">Downbeat at 12:00 PM (Noon)</span>
+                </div>
+
+                <div class="ticket-detail-box">
+                  <span class="detail-eyebrow">EXACT LOCATION</span>
+                  <strong class="detail-primary">River Park Plaza</strong>
+                  <span class="detail-secondary">Right in front of the Regal Cinema (Fresno, CA)</span>
+                </div>
+              </div>
+
+              <!-- Live Countdown Clock Embedded in Ticket -->
+              <div class="ticket-countdown-bar">
+                <span class="countdown-title">COUNTDOWN TO DOWNBEAT:</span>
+                <div class="countdown-boxes" id="countdown" aria-live="polite">
+                  <div class="t-cd-unit">
+                    <span class="t-cd-num" id="cd-days">--</span>
+                    <span class="t-cd-lbl">DAYS</span>
+                  </div>
+                  <span class="t-cd-colon">:</span>
+                  <div class="t-cd-unit">
+                    <span class="t-cd-num" id="cd-hours">--</span>
+                    <span class="t-cd-lbl">HRS</span>
+                  </div>
+                  <span class="t-cd-colon">:</span>
+                  <div class="t-cd-unit">
+                    <span class="t-cd-num" id="cd-mins">--</span>
+                    <span class="t-cd-lbl">MIN</span>
+                  </div>
+                  <span class="t-cd-colon">:</span>
+                  <div class="t-cd-unit">
+                    <span class="t-cd-num" id="cd-secs">--</span>
+                    <span class="t-cd-lbl">SEC</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Perforated Divider -->
+            <div class="ticket-perforation" aria-hidden="true">
+              <span class="notch-top"></span>
+              <span class="perf-line"></span>
+              <span class="notch-bottom"></span>
+            </div>
+
+            <!-- Ticket Stub with Actions -->
+            <div class="ticket-stub">
+              <span class="stub-serial">NO. 2026-1213</span>
+              <div class="stub-buttons">
+                <a href="https://www.google.com/maps/search/?api=1&query=Regal+Fresno+River+Park+250+Paseo+del+Centro+Fresno+CA"
+                  target="_blank" rel="noopener" class="stub-btn map-btn">
+                  <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd"
+                      d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.842 11.842 0 00.976.544l.062.029.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z"
+                      clip-rule="evenodd" />
+                  </svg>
+                  <span>Directions to Regal</span>
+                </a>
+                <button type="button" id="add-ics-btn" class="stub-btn cal-btn">
+                  <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd"
+                      d="M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 012 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z"
+                      clip-rule="evenodd" />
+                  </svg>
+                  <span>Save to Calendar (.ics)</span>
+                </button>
+                <a id="google-cal-link" href="#" target="_blank" rel="noopener" class="stub-btn gcal-btn">
+                  <span>+ Google Calendar</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Concert Day Feature Cards -->
+          <div class="vibe-trio">
+            <div class="vibe-card tilt-left">
+              <div class="vibe-top-row">
+                <div class="vibe-number">01 • SOUND</div>
+                <span class="vibe-stamp">4-PART HARMONY</span>
+              </div>
+              <h3>Classic Carols, Heavy Brass</h3>
+              <p>Hear your favorite Christmas melodies arranged specifically for low brass ensemble-deep, organ-like,
+                resonant, and joyful.</p>
+            </div>
+            <div class="vibe-card tilt-none">
+              <div class="vibe-top-row">
+                <div class="vibe-number red">02 • SETTING</div>
+                <span class="vibe-stamp">OUTDOOR PLAZA</span>
+              </div>
+              <h3>Right in Front of Regal</h3>
+              <p>We set up in the main River Park promenade right outside the movie theater entrance. Grab a warm drink
+                and gather round!</p>
+            </div>
+            <div class="vibe-card tilt-right">
+              <div class="vibe-top-row">
+                <div class="vibe-number gold">03 • TRADITION</div>
+                <span class="vibe-stamp">FESTIVE GEAR</span>
+              </div>
+              <h3>Decked-Out Bells &amp; Hats</h3>
+              <p>From sousaphones wrapped in garland and fairy lights to Santa hats on every player, it's a sight and
+                sound for the whole family.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           THE HORNS OF BIG BRASS CHRISTMAS (VISUAL LINEUP SHOWCASE)
+           ==================================================================== -->
+      <section id="horns-section" class="mixer-section reveal-on-scroll">
+        <div class="container">
+          <div class="mixer-console">
+            <div class="mixer-header">
+              <div>
+                <span class="sticker-tag white-tilt">THE LOW BRASS CHOIR</span>
+                <h2>Meet the Horns of Big Brass Christmas</h2>
+                <p>
+                  What makes an all-low-brass band sound like a giant outdoor Christmas pipe organ? Every low brass
+                  instrument brings its own unmistakable voice to our holiday arrangements-and players of all ages and
+                  skill levels are invited to join!
+                </p>
+              </div>
+              <div class="mixer-master-controls">
+                <a href="#rsvp-performer" class="cta-btn cta-gold">
+                  <span>Bring Your Horn on Dec 13th →</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="mixer-channels-grid">
+              <!-- Card 1: Tenor Trombones -->
+              <div class="channel-card">
+                <div class="horn-illustration">
+                  <img src="files/inst-tenor-trombone.jpg" alt="Tenor Trombone" loading="lazy" />
+                </div>
+                <h3>Tenor Trombones</h3>
+                <p>Bright, bold, and expressive-adding crisp energy and classic brass shimmer that carries across the
+                  River Park plaza.</p>
+              </div>
+
+              <!-- Card 2: Euphoniums & Baritones -->
+              <div class="channel-card">
+                <div class="horn-illustration">
+                  <img src="files/inst-euphonium.jpg" alt="Euphonium and Baritone" loading="lazy" />
+                </div>
+                <h3>Euphoniums &amp; Baritones</h3>
+                <p>Rich, warm, and singing-blending smoothly across the whole ensemble to give our holiday carols their
+                  full, rounded sound.</p>
+              </div>
+
+              <!-- Card 3: Bass Trombones -->
+              <div class="channel-card">
+                <div class="horn-illustration">
+                  <img src="files/inst-bass-trombone.jpg" alt="Bass Trombone" loading="lazy" />
+                </div>
+                <h3>Bass Trombones</h3>
+                <p>Deep, resonant, and powerful-bridging the trombones and tubas with unmistakable low-brass punch.</p>
+              </div>
+
+              <!-- Card 4: Tubas & Sousaphones -->
+              <div class="channel-card">
+                <div class="horn-illustration">
+                  <img src="files/inst-sousaphone.jpg" alt="Tuba and Sousaphone" loading="lazy" />
+                </div>
+                <h3>Tubas &amp; Sousaphones</h3>
+                <p>Big bells decked out in Santa hats and holiday garland-delivering the booming bass foundation you can
+                  feel in your chest!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           INTERACTIVE ROLL CALL: STAGE MAP + ATTENDEE & PERFORMER PASSES
+           ==================================================================== -->
+      <section id="rsvp-section" class="rsvp-section reveal-on-scroll">
+        <div class="container">
+          <div class="section-intro">
+            <div class="sticker-tag gold-tilt">LIVE COMMUNITY HEADCOUNT</div>
+            <h2 class="display-heading">Count Yourself In!</h2>
+            <p class="lead-copy">
+              Are you coming to cheer on the band at River Park, or bringing a low brass horn to play with us? Claim
+              your pass below and watch our virtual River Park Plaza fill up!
+            </p>
+          </div>
+
+          <!-- Scoreboard + Interactive Stage Formation Visualizer -->
+          <div class="plaza-tracker-board">
+            <div class="scoreboard-bar" aria-live="polite">
+              <div class="score-tile">
+                <span class="score-tag">CROWD TRACKER</span>
+                <div class="score-value-row">
+                  <span class="score-num" id="attendee-count-display">0</span>
+                  <span class="score-unit">Attendees Coming</span>
+                </div>
+                <div class="section-mini-pills" id="crowd-ring-dots" aria-hidden="true"></div>
+              </div>
+
+              <div class="score-vs">
+                <svg viewBox="0 0 32 32" aria-hidden="true">
+                  <path d="M16 2L19.8 12.2L30 16L19.8 19.8L16 30L12.2 19.8L2 16L12.2 12.2L16 2Z" fill="#FFFFFF" />
+                </svg>
+              </div>
+
+              <div class="score-tile gold-tile">
+                <span class="score-tag">BAND ROSTER</span>
+                <div class="score-value-row">
+                  <span class="score-num" id="performer-count-display">0</span>
+                  <span class="score-unit">Performers Signed Up</span>
+                </div>
+                <!-- Section Breakdown Badges -->
+                <div class="roster-breakdown">
+                  <span class="sec-chip">Tubas/Sousas: <strong id="count-tubas">0</strong></span>
+                  <span class="sec-chip">Euphs/Baris: <strong id="count-euphs">0</strong></span>
+                  <span class="sec-chip">Trombones: <strong id="count-bones">0</strong></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Live Holiday Cheer & Signup Ticker -->
+            <div class="live-cheer-strip">
+              <span class="cheer-badge">LIVE PLAZA FEED</span>
+              <div class="cheer-messages" id="cheer-feed" aria-live="polite">
+                <span class="cheer-item">🎺 <strong>Fresno Low Brass Crew</strong> is getting ready for Dec 13th @
+                  12PM!</span>
+                <span class="cheer-item">🎄 <strong>River Park Plaza</strong> - right in front of the Regal
+                  Cinema!</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Two Interactive Passes: Audience Pass vs Backstage Performer Pass -->
+          <div class="passes-grid">
+
+            <!-- PASS 1: AUDIENCE / ATTENDEE -->
+            <div class="pass-card audience-pass" id="rsvp-attendee">
+              <div class="pass-header red-header">
+                <span class="pass-type">AUDIENCE FAN PASS</span>
+                <span class="pass-badge">DEC 13 • 12PM</span>
+              </div>
+
+              <div class="pass-body">
+                <h3>I'm Coming to Watch!</h3>
+                <p>Let the band know you'll be in front of Regal Cinema cheering us on! How many people are you bringing
+                  along?</p>
+
+                <form id="attendee-form" class="pass-form">
+                  <div class="field-group">
+                    <span class="field-label">1. Tap your group size:</span>
+                    <div class="party-grid" role="group" aria-label="Select group size">
+                      <button type="button" class="party-btn active" data-size="1">
+                        <span class="p-num">+1</span>
+                        <span class="p-txt">Just Me</span>
+                      </button>
+                      <button type="button" class="party-btn" data-size="2">
+                        <span class="p-num">+2</span>
+                        <span class="p-txt">Pair</span>
+                      </button>
+                      <button type="button" class="party-btn" data-size="4">
+                        <span class="p-num">+4</span>
+                        <span class="p-txt">Family</span>
+                      </button>
+                      <button type="button" class="party-btn" data-size="6">
+                        <span class="p-num">+6</span>
+                        <span class="p-txt">Big Crew</span>
+                      </button>
+                    </div>
+                    <input type="hidden" id="party-size" name="partySize" value="1" />
+                  </div>
+
+                  <div class="field-group">
+                    <label for="attendee-note" class="field-label">2. Leave a holiday shoutout or carol request
+                      (optional):</label>
+                    <input type="text" id="attendee-note" name="note"
+                      placeholder="e.g., The Miller family is excited for Sleigh Ride!" maxlength="120" />
+                  </div>
+
+                  <button type="submit" class="cta-btn cta-red full-width" id="attendee-submit-btn">
+                    <span>Add +1 to the Crowd Count!</span>
+                  </button>
+
+                  <div id="attendee-feedback" class="pass-feedback" hidden></div>
+                </form>
+              </div>
+            </div>
+
+            <!-- PASS 2: PERFORMER SIGNUP + EMAIL CAPTURE -->
+            <div class="pass-card performer-pass" id="rsvp-performer">
+              <div class="pass-header gold-header">
+                <span class="pass-type">PERFORMER ROSTER PASS</span>
+                <span class="pass-badge">ALL LOW BRASS WELCOME</span>
+              </div>
+
+              <div class="pass-body">
+                <h3>I Want to Perform!</h3>
+                <p>Play tuba, sousaphone, euphonium, baritone, or trombone? Pick your horn and drop your email so we can
+                  send rehearsal &amp; call time updates!</p>
+
+                <form id="performer-form" class="pass-form">
+                  <!-- Tactile Instrument Selector Pills -->
+                  <div class="field-group">
+                    <span class="field-label">1. Which low brass horn are you bringing? <span
+                        class="req">*</span></span>
+                    <div class="instrument-pills" role="radiogroup" aria-label="Choose your instrument">
+                      <button type="button" class="inst-pill active" data-inst="Tuba" data-group="tubas">Tuba</button>
+                      <button type="button" class="inst-pill" data-inst="Sousaphone"
+                        data-group="tubas">Sousaphone</button>
+                      <button type="button" class="inst-pill" data-inst="Euphonium"
+                        data-group="euphs">Euphonium</button>
+                      <button type="button" class="inst-pill" data-inst="Baritone" data-group="euphs">Baritone</button>
+                      <button type="button" class="inst-pill" data-inst="Tenor Trombone" data-group="bones">Tenor
+                        Trombone</button>
+                      <button type="button" class="inst-pill" data-inst="Bass Trombone" data-group="bones">Bass
+                        Trombone</button>
+                    </div>
+                    <input type="hidden" id="performer-instrument" name="instrument" value="Tuba" required />
+                    <input type="hidden" id="performer-group" value="tubas" />
+                  </div>
+
+                  <div class="field-row-split">
+                    <div class="field-group">
+                      <label for="performer-name" class="field-label">2. Your Name <span class="req">*</span></label>
+                      <input type="text" id="performer-name" name="name" required placeholder="Alex Martinez" />
+                    </div>
+                    <div class="field-group">
+                      <label for="performer-email" class="field-label">3. Your Email <span class="req">*</span></label>
+                      <input type="email" id="performer-email" name="email" required placeholder="you@example.com" />
+                    </div>
+                  </div>
+
+                  <div class="field-group">
+                    <label for="performer-notes" class="field-label">4. Any notes or questions? (optional)</label>
+                    <input type="text" id="performer-notes" name="notes"
+                      placeholder="e.g., High school band director bringing 3 students!" maxlength="150" />
+                  </div>
+
+                  <button type="submit" class="cta-btn cta-gold full-width" id="performer-submit-btn">
+                    <span>Join the 2026 Low Brass Lineup!</span>
+                  </button>
+
+                  <div id="performer-feedback" class="pass-feedback" hidden></div>
+                </form>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           PERFORMERS FACEBOOK GROUP BACKSTAGE CLUB
+           ==================================================================== -->
+      <section id="performers-club" class="performers-club-section reveal-on-scroll">
+        <div class="container">
+          <div class="backstage-card">
+            <div class="backstage-left">
+              <span class="sticker-tag white-tilt">PERFORMER HEADQUARTERS</span>
+              <h2>Get Rehearsal &amp; Call Times in Our Facebook Group</h2>
+              <p>
+                Whether you're a seasoned Big Brass Christmas vet or joining us for your very first December concert,
+                our <strong>Performers Facebook Group</strong> is where the band coordinates everything leading up to
+                December 13th:
+              </p>
+
+              <div class="backstage-grid">
+                <div class="bs-item">
+                  <span class="bs-check">✓</span>
+                  <div>
+                    <strong>Practice Schedule</strong>
+                    <span>Rehearsal dates, time, and location in Fresno</span>
+                  </div>
+                </div>
+                <div class="bs-item">
+                  <span class="bs-check">✓</span>
+                  <div>
+                    <strong>Call Time &amp; Setup</strong>
+                    <span>Where to unload &amp; warm up at River Park on Dec 13</span>
+                  </div>
+                </div>
+                <div class="bs-item">
+                  <span class="bs-check">✓</span>
+                  <div>
+                    <strong>Parts &amp; Gear</strong>
+                    <span>Music updates and recommended gear for the show</span>
+                  </div>
+                </div>
+                <div class="bs-item">
+                  <span class="bs-check">✓</span>
+                  <div>
+                    <strong>Festive Bell Decor</strong>
+                    <span>Show off your Santa hat, lights, and horn garland!</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="backstage-actions">
+                <a href="https://www.facebook.com/groups/bigbrasschristmas" id="fb-group-link" target="_blank"
+                  rel="noopener" class="cta-btn cta-fb">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                      d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+                  </svg>
+                  <span>Join the Performers Facebook Group</span>
+                </a>
+                <a href="files/Big%20Brass%20Christmas%20Flyer%202026.pdf" target="_blank" rel="noopener"
+                  class="cta-btn cta-cream-outline">
+                  <span>Download Printable Flyer (PDF)</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Decorative Mini Poster Preview Card on the Right -->
+            <div class="backstage-right">
+              <div class="mini-flyer-preview">
+                <img src="files/flyer-hero-complete.svg" alt="Big Brass Christmas Holiday Performance Illustration" />
+                <div class="mini-flyer-caption">
+                  <span>OFFICIAL 2026 POSTER</span>
+                  <a href="files/Big%20Brass%20Christmas%20Flyer%202026.pdf" target="_blank" rel="noopener">Download PDF
+                    →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           FAQ SECTION
+           ==================================================================== -->
+      <section id="faq-section" class="faq-section reveal-on-scroll">
+        <div class="container narrow">
+          <div class="section-intro">
+            <div class="sticker-tag green-tilt">QUESTIONS &amp; ANSWERS</div>
+            <h2 class="display-heading">Everything You Need to Know</h2>
+          </div>
+
+          <div class="faq-stack">
+            <details class="faq-card" open>
+              <summary>Is the concert free to attend?</summary>
+              <p>
+                Yes! The concert is <strong>100% free</strong> and outdoors right in front of the Regal Cinema at River
+                Park in Fresno. Bring your family, grab a warm drink, and enjoy the holiday music!
+              </p>
+            </details>
+
+            <details class="faq-card">
+              <summary>Who can play in Big Brass Christmas?</summary>
+              <p>
+                Any low brass musician-tuba, sousaphone, euphonium, baritone, or trombone! We welcome from elementary
+                school to college players, band directors, community musicians, and folks dusting off their horn
+                for the holidays. Sign up with your email above and join our <a href="#performers-club">Facebook
+                  Group</a> for rehearsal and call times.
+              </p>
+            </details>
+
+            <details class="faq-card">
+              <summary>What should performers bring on December 13th?</summary>
+              <p>
+                Bring your low brass instrument, chair, a folding music stand (plus clothespins or wind clips!),
+                and festive holiday attire-Santa hats, ugly Christmas sweaters, and garland on your bell are part of the
+                tradition!
+              </p>
+            </details>
+
+            <details class="faq-card">
+              <summary>How can I share this with my band director or friends?</summary>
+              <p>
+                Share <strong>bigbrasschristmas.com</strong> or <a
+                  href="files/Big%20Brass%20Christmas%20Flyer%202026.pdf" target="_blank" rel="noopener">download our
+                  printable 2026 Flyer PDF</a> to post in your band room!
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ====================================================================
+         FOOTER
+         ==================================================================== -->
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-col">
+          <a href="#top" class="footer-logo-link" aria-label="Big Brass Christmas">
+            <img src="files/logo-horizontal-night.svg" alt="Big Brass Christmas" class="footer-logo-img" />
+          </a>
+          <p>Fresno, California's annual low brass holiday concert.</p>
+          <p class="footer-highlight">Sunday, December 13th at 12:00 PM • River Park (In Front of Regal Cinema)</p>
+        </div>
+        <div class="footer-nav">
+          <a href="#ticket-section">Concert Details</a>
+          <a href="#horns-section">The Horns</a>
+          <a href="#rsvp-section">RSVP &amp; Headcount</a>
+          <a href="#performers-club">Performers Facebook Group</a>
+          <a href="files/Big%20Brass%20Christmas%20Flyer%202026.pdf" target="_blank" rel="noopener">2026 Flyer (PDF)</a>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- /.poster-shell -->
+
+
+  <script src="app.js"></script>
+</body>
+
+</html>
